@@ -1,0 +1,166 @@
+# Git Setup and Upload Guide
+
+## 🚨 Git is not installed on your system!
+
+Follow these steps to set up Git and upload your project to GitHub:
+
+## Step 1: Install Git
+
+### Option 1: Download from Official Website (Recommended)
+1. Go to https://git-scm.com/download/win
+2. Download the latest version for Windows
+3. Run the installer with default settings
+
+### Option 2: Via Chocolatey (if you have it installed)
+```powershell
+choco install git
+```
+
+### Option 3: Via Winget (if you have it installed)
+```powershell
+winget install --id Git.Git -e --source winget
+```
+
+## Step 2: Verify Git Installation
+
+After installation, open PowerShell and run:
+```powershell
+git --version
+```
+
+You should see something like: `git version 2.45.1.windows.1`
+
+## Step 3: Configure Git
+
+Set up your Git identity (replace with your actual details):
+```powershell
+git config --global user.name "Your Name"
+git config --global user.email "your.email@example.com"
+```
+
+## Step 4: Initialize and Upload Your Project
+
+Navigate to your project directory and run these commands in sequence:
+
+### 1. Initialize Git Repository
+```powershell
+cd "C:\Users\krish\OneDrive\Desktop\Ai career agent"
+git init
+```
+
+### 2. Add the Remote Repository
+```powershell
+git remote add origin https://github.com/krishnarnpur697-star/Ai-powered-resume-builder.git
+```
+
+### 3. Create .gitignore (if not already exists)
+Your project already has a .gitignore file, but let's make sure it includes important exclusions:
+
+### 4. Add All Files
+```powershell
+git add .
+```
+
+### 5. Check Status
+```powershell
+git status
+```
+
+### 6. Make Initial Commit
+```powershell
+git commit -m "Initial commit: AI-powered Learning Assistant for SDG 4"
+```
+
+### 7. Push to GitHub
+```powershell
+git push -u origin main
+```
+
+## If You Get Authentication Errors:
+
+### Option 1: Use Personal Access Token (PAT)
+1. Go to GitHub → Settings → Developer settings → Personal access tokens → Tokens (classic)
+2. Generate new token with `repo` permissions
+3. When prompted for password during push, use the token instead of your password
+
+### Option 2: Use SSH (Alternative)
+```powershell
+# Generate SSH key (if you don't have one)
+ssh-keygen -t ed25519 -C "your.email@example.com"
+
+# Copy the public key and add to GitHub Settings → SSH and GPG keys
+
+# Change remote to SSH
+git remote set-url origin git@github.com:krishnarnpur697-star/Ai-powered-resume-builder.git
+
+# Then push
+git push -u origin main
+```
+
+## Complete Command Sequence
+
+After installing Git, run these commands in order:
+
+```powershell
+# Navigate to project
+cd "C:\Users\krish\OneDrive\Desktop\Ai career agent"
+
+# Configure Git (replace with your details)
+git config --global user.name "Krishna Purwar"
+git config --global user.email "your.email@example.com"
+
+# Initialize and add remote
+git init
+git remote add origin https://github.com/krishnarnpur697-star/Ai-powered-resume-builder.git
+
+# Add files and commit
+git add .
+git commit -m "Initial commit: AI-powered Learning Assistant for SDG 4"
+
+# Push to GitHub
+git push -u origin main
+```
+
+## Troubleshooting
+
+### If you get "Repository not found" error:
+- Make sure the repository URL is correct
+- Ensure you have access to the repository
+- Check if the repository exists on GitHub
+
+### If you get "failed to push some refs" error:
+```powershell
+# Pull any existing content first
+git pull origin main --allow-unrelated-histories
+
+# Then push
+git push -u origin main
+```
+
+### If you want to change the remote URL later:
+```powershell
+git remote set-url origin https://github.com/YOUR_USERNAME/YOUR_REPO_NAME.git
+```
+
+## Your Project Structure
+
+After upload, your repository will contain:
+- `backend/` - FastAPI server with LangGraph workflow
+- `frontend/` - React chat interface
+- `README.md` - Project documentation
+- `QUICKSTART.md` - Setup instructions
+- `requirements.txt` - Python dependencies
+- `package.json` - Node.js dependencies
+
+## Next Steps
+
+1. Install Git (see Step 1 above)
+2. Follow the complete command sequence
+3. Your project will be live on GitHub!
+4. Consider adding a proper repository description and README on GitHub
+
+## Repository URL
+https://github.com/techtushardc07/AI-Resume-Builder/tree/main
+---
+
+**Note:** Make sure your `.env` file is NOT committed to Git (it's already in .gitignore). Never commit API keys or sensitive information.
